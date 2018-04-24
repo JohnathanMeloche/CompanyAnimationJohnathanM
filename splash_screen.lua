@@ -45,7 +45,7 @@ function scene:create( event )
 	-- Displays Part of the Company logo to be used for animation and sets properties
 	local logoF = display.newImageRect("Images/splashScreenVariations/logoF.png", 1400, 1000)
 	logoF.x = 150
-	logoF.y = 2000
+	logoF.y = 1000
 
 	-- Y must be 600
 
@@ -58,17 +58,15 @@ function scene:create( event )
 
 	local function logoRiseUp()
 		logoRise = logoF.y - riseSpeed
+		timer.performWithDelay(300, logoRise)
 	end
 
 	local function rotateEarth()
 		earthRotate = logoEarth:rotate(.7)
 		timer.performWithDelay(300, earthRotate)
-		logoRiseUp
 	end
-
-
+	logoRiseUp()
 	Runtime:addEventListener("enterFrame", rotateEarth)
-
 
 
 
