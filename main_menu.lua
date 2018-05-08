@@ -1,5 +1,4 @@
--- This is the Splash Screen Scene.
-
+--This is the Main Menu Scene
 
 -- Calling composer library
 local composer = require( "composer" )
@@ -7,35 +6,56 @@ local composer = require( "composer" )
 local pex = require "pony.com.ponywolf.pex"
 
 -- Naming Scene
-sceneName = "splash_screen"
+sceneName = "main_menu"
 
 -- Creating Scene Object
 local scene = composer.newScene( sceneName )
 
 ------------------------------------------------------
 
+local mainMenuImage = display.newImageRect("Images/MainMenu.png", 1440, 2000)
+mainMenuImage.x = 720
+mainMenuImage.y = 450
+local playButton = display.newImageRect("Images/PlayButtonUnpressed.png", 560, 190)
+playButton.x = 720
+playButton.y = 500
+local optionsButton = display.newImageRect("Images/OptionsButtonUnpressed.png", 560, 190)
+optionsButton.x = 720
+optionsButton.y = 700
+local controlsButton = display.newImageRect("Images/ControlsButtonUnpressed.png", 560, 190)
+controlsButton.x = 720
+controlsButton.y = 900
+local creditsButton = display.newImageRect("Images/CreditsButtonUnpressed.png", 560, 190)
+creditsButton.x = 720
+creditsButton.y = 1100
+local achievementsButton = display.newImageRect("Images/AchievementButtonUnpressed.png", 560, 190)
+achievementsButton.x = 720
+achievementsButton.y = 1300
+local playButtonPressed = display.newImageRect("Images/PlayButtonPressed.png", 560, 190)
+playButtonPressed.x = 720
+playButtonPressed.y = 500
+playButtonPressed.isVisible = false
+local optionsButtonPressed = display.newImageRect("Images/OptionsButtonPressed.png", 560, 190)
+optionsButtonPressed.x = 720
+optionsButtonPressed.y = 700
+optionsButtonPressed.isVisible = false
+local controlsButtonPressed = display.newImageRect("Images/ControlsButtonPressed.png", 560, 190)
+controlsButtonPressed.x = 720
+controlsButtonPressed.y = 900
+controlsButtonPressed.isVisible = false
+local creditsButtonPressed = display.newImageRect("Images/CreditsButtonPressed.png", 560, 190)
+creditsButtonPressed.x = 720
+creditsButtonPressed.y = 1100
+creditsButtonPressed.isVisible = false
+local achievementsButtonPressed = display.newImageRect("Images/AchievementButtonPressed.png", 560, 190)
+achievementsButtonPressed.x = 720
+achievementsButtonPressed.y = 1300
+achievementsButtonPressed.isVisible = false
+local ButtonEmitter1
+local ButtonEmitter2
+local ButtonEmitter3
+local ButtonEmitter4
 
-
-
-local backgroundColour = display.setDefault ( "background", 123/255, 123/255, 130/255)
-local logoSword
-local logoSwordBroken
-local logoEarth
-local logoF
-local logoTitle
-local swordSound = audio.loadSound("Sounds/sword.mp3")
-local swordPlay = audio.play(swordSound)
-
-
-
-
-
-
-local function MainMenuTransition()
-	composer.gotoScene( "main_menu" )
-end
-
-timer.performWithDelay(4000, MainMenuTransition)
 
 
 
@@ -45,73 +65,6 @@ function scene:create( event )
     -- Creating a group that associates objects with the scene
     local sceneGroup = self.view
 
-	-- Declares Local Image Variables
-	local earthRotate
-	local riseSpeed = -5
-	local riseSpeed2 = -6
-
-
-
-
-
-	-- Displays Part of the Company logo to be used for animation and sets properties
-	logoSword = display.newImageRect("Images/splashScreenVariations/logosword.png", 1400, 1000)
-	logoSword.x = 1200
-	logoSword.y = 600
-
-	sceneGroup:insert(logoSword)
-	
-	-- Displays Part of the Company logo to be used for animation and sets properties
-	logoEarth = display.newImageRect("Images/splashScreenVariations/logoEarth.png", 500, 500)
-	logoEarth.x = 1100
-	logoEarth.y = -200
-
-	sceneGroup:insert(logoEarth)
-	
-	-- Displays Part of the Company logo to be used for animation and sets properties
-	logoF = display.newImageRect("Images/splashScreenVariations/logoF.png", 1400, 1000)
-	logoF.x = 600
-	logoF.y = 1300
-
-	sceneGroup:insert(logoF)
-	
-	-- Y must be 600
-
-	-- Displays Part of the Company logo to be used for animation and sets properties
-	logoTitle = display.newImageRect("Images/splashScreenVariations/logoTitle.png", 1400, 200)
-	logoTitle.x = 720
-	logoTitle.y = 1200
-	logoTitle:setFillColor (146/255, 148/255, 146/255)
-
-	sceneGroup:insert(logoTitle)
-	
-
-
-
-
-	local function rotateEarth()
-		earthRotate = logoEarth:rotate(.7)
-		if logoF.y < 550 then
-			return
-		else
-			logoF.y = logoF.y + riseSpeed
-		end
-	
-	end
-
-	local function moveSword()
-		if logoSword.x < 400 then
-			return
-		else
-			logoSword.x = logoSword.x + riseSpeed2
-		end
-		if logoSword.x < 400 then
-			logoSword:rotate(-35)
-		end
-	end
-
-	Runtime:addEventListener("enterFrame", rotateEarth)
-	Runtime:addEventListener("enterFrame", moveSword)
 
 end
 
@@ -182,3 +135,9 @@ scene:addEventListener( "destroy", scene )
 -------------------------------------------------------
 
 return scene
+
+
+
+
+
+
